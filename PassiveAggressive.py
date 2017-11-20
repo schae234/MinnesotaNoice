@@ -25,7 +25,9 @@ class Noice():
             raise ValueError(f'{number} doesnt look like a phone number')
         return number
 
-    def send_message(self,to_number,message='The squeky wheel gets the grease!'):
+    def send_message(self,to_number,message=None):
+        if message == None:
+            message='The squeaky wheel gets the grease!'
         message = self.client.messages.create(
             to_number,
             from_=self.from_number,
@@ -74,7 +76,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--message',
         type=str,
-        default=''
+        default=None
     )
     parser.add_argument(
         '--I_UNDERSTAND_DOS_ATTACKS_ARE_PROBABLY_ILLEGAL_WHERE_LIVE_AND_I_WAIVE_ALL_LIABILITY_FROM_THE_AUTHOR_OF_THIS_SOFTWARE',
